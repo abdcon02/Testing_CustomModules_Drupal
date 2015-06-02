@@ -49,6 +49,13 @@ function titlecase(){
 }
 
 function makeTitleCase($title){
-    $title = ucfirst($title);
-    return $title;
+    $words_array = explode(" ", $title);
+    $new_title = [];
+    for($i = 0; $i<count($words_array); $i++){
+        array_push($new_title, ucfirst($words_array[$i]));
+
+    }
+    $new_title = implode(" ", $new_title);
+
+    return $new_title;
 }

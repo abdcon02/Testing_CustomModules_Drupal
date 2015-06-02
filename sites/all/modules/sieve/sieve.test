@@ -1,0 +1,17 @@
+<?php
+
+    class PrimeShiftTestCase extends DrupalUnitTestCase {
+
+        public static function getInfo(){
+            return array(
+                'name' => 'Sieve Test',
+                'description' => 'Tests to make sure prime shifting function works',
+                'group' => 'AAPrime',
+            );
+        }
+
+        function testPrimeNumbers(){
+            $result = primeNumbers(33);
+            $this->assertEqual($result, 33);
+        }
+    }

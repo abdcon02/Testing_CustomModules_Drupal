@@ -20,6 +20,21 @@
             $result = makeTitleCase('hello');
             $this->assertEqual($result, 'Hello');
 
+            $result = makeTitleCase('hello world');
+            $this->assertEqual($result, 'Hello World');
+
+            $result = makeTitleCase('hello and world');
+            $this->assertEqual($result, 'Hello and World');
+
+            $result = makeTitleCase('hello to a');
+            $this->assertEqual($result, 'Hello to A');
+
+            $result = makeTitleCase('and the world');
+            $this->assertEqual($result, 'And the World');
+
+            $result = makeTitleCase('there\'s a snake');
+            $this->assertEqual($result, 'There\'s a Snake');
+
         }
 
 }

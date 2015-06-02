@@ -1,0 +1,7 @@
+name = Prime Shifting
+description = takes a number and returns all of the prime numbers less that that number
+package = Epicodus Examples
+core = 7.x
+files[] = sieve.module
+files[] = sieve.test
+dependencies = simpletest

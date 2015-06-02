@@ -1,0 +1,45 @@
+<?php
+
+function sieve_menu(){
+    $items['sieve'] = array(
+        'title' => 'Sieve Form',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('sieve_form'),
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+    $items['sieve_results'] = array(
+        'title' => 'Prime Numbers',
+        'page callback' => 'prime_numbers_results',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+    return $items;
+}
+
+function sieve_form(){
+    $form['number'] = array(
+        '#title' => 'Given Number',
+        '#type' => 'textfield',
+        '#description' => t('All prime numbers up to given number will be returned'),
+    );
+    $form['submit'] = array(
+        '#type' => 'submit',
+        '#value' => 'Find Primes',
+    );
+    return $form;
+}
+
+function sieve_form_submit($form, &$form_state){
+    $number = $form_state['values']['number'];
+    $_SESSION['number'] = $number;
+    $form_state['redirect'] = 'sieve_results';
+}
+
+function prime_numbers_results(){
+    return 'Your number was: ' . $_SESSION['number'];
+}
+
+function primeNumbers($input) {
+    return $input;
+}
