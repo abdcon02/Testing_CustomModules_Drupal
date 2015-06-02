@@ -1,0 +1,7 @@
+name = Title Case Module
+description = A module that takes user input and makes it into title case
+package = Epicodus Examples
+core = 7.x
+files[] = titlecase.module
+files[] = titlecase.test
+dependencies = simpletest

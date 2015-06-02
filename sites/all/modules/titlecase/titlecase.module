@@ -1,0 +1,48 @@
+<?php
+function titlecase_menu() {
+    $items = array();
+    $items['titlecase'] = array(
+        'title' => 'Title Case',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('title_case_form'),
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+
+    $items['title_case_results'] = array(
+        'title' => 'Title Case',
+        'page callback' => 'titlecase',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+
+    return $items;
+}
+
+function title_case_form() {
+    $form = array();
+    $form['title_case'] = [
+        '#title' => 'Title',
+        '#type' => 'textfield',
+        '#description' => t('Enter Title to be TitleCased'),
+    ];
+
+    $form['submit'] = [
+        '#value' => 'Submit',
+        '#type' => 'submit',
+
+    ];
+
+    return $form;
+}
+
+function title_case_form_submit($form, &$form_state){
+    $title = $form_state['values']['title_case'];
+    $_SESSION['title'] = $title;
+
+    $form_state['redirect'] = 'title_case_results';
+}
+
+function titlecase(){
+    return '<p> Hello </p>';
+}
