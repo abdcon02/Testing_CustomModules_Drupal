@@ -11,7 +11,28 @@
         }
 
         function testPrimeNumbers(){
-            $result = primeNumbers(33);
-            $this->assertEqual($result, 33);
+            $result = primeNumbers(1);
+            $result = implode(" ", $result);
+            $this->assertEqual($result, 0);
+
+            $result = primeNumbers(2);
+            $result = implode(" ", $result);
+            $this->assertEqual($result, '2');
+
+            $result = primeNumbers(3);
+            $result = implode(" ", $result);
+            $this->assertEqual($result, '2 3');
+
+            $result = primeNumbers(4);
+            $result = implode(" ", $result);
+            $this->assertEqual($result, '2 3');
+
+            $result = primeNumbers(10);
+            $result = implode(" ", $result);
+            $this->assertEqual($result, '2 3 5 7 9');
+
+            $result = primeNumbers(20);
+            $result = implode(" ", $result);
+            $this->assertEqual($result, '2 3 5 7 9 11 13 17 19');
         }
     }
