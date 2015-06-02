@@ -44,5 +44,10 @@ function title_case_form_submit($form, &$form_state){
 }
 
 function titlecase(){
+    
     return '<p> Hello </p>';
+}
+
+function testthetest($test){
+    return $test . " world!";
 }

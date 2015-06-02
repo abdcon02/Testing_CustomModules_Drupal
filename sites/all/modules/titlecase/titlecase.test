@@ -1,0 +1,22 @@
+<?php
+
+    class SimpleTestUnitTestTitleCaseTestCase extends DrupalUnitTestCase {
+
+        public static function getInfo(){
+            return array(
+                'name' => 'Title Case Tests',
+                'description' => 'These test make sure the title case generator module works properly',
+                'group' => 'AA',
+            );
+        }
+        public function setUp() {
+            drupal_load('module', 'titlecase');
+            parent::setUp();
+        }
+
+        function testTitleCase(){
+            $result = testthetest('hello');
+            $message = "The test should return hello world";
+            $this->assertEqual($result, 'hello world!', $message);
+        }
+    }
