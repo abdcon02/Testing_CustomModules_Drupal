@@ -54,7 +54,7 @@ function makeTitleCase($title){
     $exceptions = [ "and", "or", "to", "a", "be", "for", "but", "the", "an"];
     $length = count($words_array);
     for($i = 0; $i < $length; $i++){
-        if((!in_array($words_array[$i], $exceptions)) || ($i == $length - 1)){
+        if((!in_array($words_array[$i], $exceptions)) || ($i == $length - 1) || ($i == $length[0])){
             $words_array[$i] = ucfirst($words_array[$i]);
         }
         array_push($new_title, $words_array[$i]);
