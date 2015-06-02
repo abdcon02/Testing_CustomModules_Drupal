@@ -14,9 +14,12 @@
             parent::setUp();
         }
 
+
         function testTitleCase(){
-            $result = testthetest('hello');
-            $message = "The test should return hello world";
-            $this->assertEqual($result, 'hello world!', $message);
+            //The test should return 'hello world!'
+            $result = makeTitleCase('hello');
+            $this->assertEqual($result, 'Hello');
+
         }
-    }
+
+}
