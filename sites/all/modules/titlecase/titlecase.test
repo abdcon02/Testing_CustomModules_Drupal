@@ -9,10 +9,6 @@
                 'group' => 'AA',
             );
         }
-        public function setUp() {
-            drupal_load('module', 'titlecase');
-            parent::setUp();
-        }
 
 
         function testTitleCase(){
@@ -32,9 +28,41 @@
             $result = makeTitleCase('and the world');
             $this->assertEqual($result, 'And the World');
 
-            $result = makeTitleCase('there\'s a snake');
-            $this->assertEqual($result, 'There\'s a Snake');
+            $result = makeTitleCase("there's a snake");
+            $this->assertEqual($result, "There's a Snake");
+        }
+
+
+    }
+
+    class TitleCaseFormSubmitTest extends DrupalWebTestCase {
+        public static function getInfo(){
+            return array(
+                'name' => 'Title Submit',
+                'description' => 'Test the submit form',
+                'group' => 'AA'
+            );
+        }
+
+        public function setUp() {
+            parent::setUp(array('titlecase'));
+
+            
+
+            $info = array();
+            $info['title_case'] = 'hello world';
+            $this->drupalPost('titlecase', $info, t('Submit'));
+            $path['source'] = 'titlecase';
+            $path['alias'] = 'title_case_form';
+            path_save($path);
 
         }
 
-}
+        public function testFormSubmit() {
+            $this->drupalGet('title_case_form');
+            $this->assertText("Title", 'The text on the page is correct.');
+
+            $this->drupalGet('title_case_results');
+            $this->assertText("Hello World", 'The form was submitted successfully');
+        }
+    }
